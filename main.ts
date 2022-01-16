@@ -3,9 +3,13 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function moveShipUp () {
     if (isGameStarted == true) {
-        spaceship.y += -3
-        if (spaceship.y < 10) {
+        if (spaceship.y <= 10) {
             spaceship.y = 10
+            spaceship.vy = 0
+        }
+        else {
+            spaceship.vy = -40
+            spaceship.y += -2
         }
     }
 }
@@ -19,12 +23,34 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function moveShipDown () {
     if (isGameStarted == true) {
-        spaceship.y += 3
-        if (spaceship.y > (scene.screenHeight() - 10)) {
-            spaceship.y = scene.screenHeight() - 10
-        }
+        spaceship.vy = 40
+        spaceship.y += 2
+        // if (spaceship.y > (scene.screenHeight() - 10)) {
+        //     spaceship.y = scene.screenHeight() - 10
+        // }
     }
 }
+
+game.onUpdate(function() {
+    if (isGameStarted == true) {
+        if (spaceship.y <= 10) {
+            spaceship.y = 10
+            spaceship.vy = 0
+        }
+        else if (spaceship.y >= (scene.screenHeight() - 10)) {
+            spaceship.y = scene.screenHeight() - 10
+            spaceship.vy = 0
+        }
+
+        if (spaceship.vy > 0) {
+            spaceship.vy += -1
+        }
+        else if (spaceship.vy < 0) {
+            spaceship.vy += 1
+        }
+    }
+})
+
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (isGameStarted == true) {
         setDirection(1)
@@ -37,6 +63,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     moveShipDown()
 })
 function setup () {
+    controller.configureRepeatEventDefaults(100, 20)
     direction = 1
     spaceship = sprites.create(assets.image`Spaceship Right`, SpriteKind.Player)
     setDirection(direction)
