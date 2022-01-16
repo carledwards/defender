@@ -1,0 +1,17 @@
+{
+    "6g*Sl9G{([Bm9/`EtT0g": {
+        "data": "hwQOAAkAAAAAAAgAAAAAAACAiAAAAAAAAAgICAAAAACAAAiAAAAAAAgACAAIAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Spaceship Left"
+    },
+    "image1": {
+        "data": "hwQOAAkAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAIAAgACAAAAIAACIAAAAAAAAgICAAAAAAAgIgAAAAAAAAACAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Spaceship Right"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
