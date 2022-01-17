@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const terrain = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     moveShipUp()
 })
@@ -8,6 +11,21 @@ function moveShipUp () {
         } else {
             spaceship.vy = -40
             spaceship.y += -2
+        }
+    }
+}
+function updateSpaceshipImage () {
+    if (direction == 0) {
+        if (Math.abs(velocity) > FULL_VELOCITY - 8) {
+            spaceship.setImage(assets.image`Spaceship Left Flame 2`)
+        } else {
+            spaceship.setImage(assets.image`Spaceship Left Flame 1`)
+        }
+    } else {
+        if (Math.abs(velocity) > FULL_VELOCITY - 8) {
+            spaceship.setImage(assets.image`Spaceship Right Flame 2`)
+        } else {
+            spaceship.setImage(assets.image`Spaceship Right Flame 1`)
         }
     }
 }
@@ -52,9 +70,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function moveDirection () {
     if (direction == 0) {
-        velocity = 60
+        velocity = FULL_VELOCITY
     } else {
-        velocity = -60
+        velocity = 0 - FULL_VELOCITY
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Repeated, function () {
@@ -64,9 +82,11 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     moveShipDown()
 })
 function setup () {
+    terrain2 = sprites.create(assets.image`terrain 1`, SpriteKind.terrain)
+    terrain2.setPosition(scene.screenWidth() / 2, scene.screenHeight() - terrain2.height)
     controller.configureRepeatEventDefaults(100, 25)
     direction = 1
-    spaceship = sprites.create(assets.image`Spaceship Right`, SpriteKind.Player)
+    spaceship = sprites.create(assets.image`Spaceship Right Flame 0`, SpriteKind.Player)
     setDirection(direction)
     isGameStarted = true
 }
@@ -79,38 +99,37 @@ function moveShipRight () {
 function setDirection (value: number) {
     if (value != direction) {
         direction = value
-        if (value == 0) {
-            spaceship.setImage(assets.image`Spaceship Left`)
-        } else {
-            spaceship.setImage(assets.image`Spaceship Right`)
-        }
+        updateSpaceshipImage()
     }
 }
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     moveShipLeft()
 })
-let velocity = 0
+let terrain2: Sprite = null
 let projectile: Sprite = null
+let velocity = 0
 let direction = 0
 let spaceship: Sprite = null
 let isGameStarted = false
-let sideMargin = 40
+let FULL_VELOCITY = 0
+let SIDE_MARGIN = 40
+FULL_VELOCITY = 70
 isGameStarted = false
 setup()
 game.onUpdate(function () {
     if (isGameStarted == true) {
         if (direction == 0) {
-            if (spaceship.x < scene.screenWidth() - sideMargin) {
+            if (spaceship.x < scene.screenWidth() - SIDE_MARGIN) {
                 spaceship.vx = velocity
             } else {
-                spaceship.x = scene.screenWidth() - sideMargin
+                spaceship.x = scene.screenWidth() - SIDE_MARGIN
                 spaceship.vx = 0
             }
         } else {
-            if (spaceship.x > sideMargin) {
+            if (spaceship.x > SIDE_MARGIN) {
                 spaceship.vx = velocity
             } else {
-                spaceship.x = sideMargin
+                spaceship.x = SIDE_MARGIN
                 spaceship.vx = 0
             }
         }
@@ -130,6 +149,20 @@ game.onUpdate(function () {
             spaceship.vy += -1
         } else if (spaceship.vy < 0) {
             spaceship.vy += 1
+        }
+    }
+    updateSpaceshipImage()
+    if (spaceship.vx == 0) {
+        terrain2.vx = velocity
+    } else {
+        if (Math.abs(terrain2.vx) < 4) {
+            terrain2.vx = 0
+        } else {
+            if (terrain2.vx < 0) {
+                terrain2.vx = terrain2.vx + 2
+            } else {
+                terrain2.vx = terrain2.vx - 2
+            }
         }
     }
 })
