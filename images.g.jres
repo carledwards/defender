@@ -1,13 +1,23 @@
 {
+    "image1": {
+        "data": "hwQPAAYAAAAAAgIA0N0NAN2tqgDdraoA0N2qAADd2gAA0B0AANB9AADQDQAAgA0AAIANAABQDQAAAA0AAAABAAAABwA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Spaceship Right"
+    },
     "6g*Sl9G{([Bm9/`EtT0g": {
-        "data": "hwQOAAkAAAAAAAgAAAAAAACAiAAAAAAAAAgICAAAAACAAAiAAAAAAAgACAAIAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAA",
+        "data": "hwQPAAYAAAAAAAcAAIABAAAADQAAUA0AAIANAACADQAA0A0AANB9AADQHQAA3doA0N2qAN2tqgDdraoA0N0NAAACAgA=",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Spaceship Left"
     },
-    "image1": {
-        "data": "hwQOAAkAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAIAAgACAAAAIAACIAAAAAAAAgICAAAAAAAgIgAAAAAAAAACAAAAAAA",
+    "image2": {
+        "data": "hwQIAAEAAAACAAAAAgAAAAIAAAACAAAAAwAAAAIAAAADAAAAAgAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "Spaceship Right"
+        "displayName": "missleRight"
+    },
+    "image3": {
+        "data": "hwQIAAEAAAACAAAAAwAAAAIAAAADAAAAAgAAAAIAAAACAAAAAgAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "missleLeft"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
